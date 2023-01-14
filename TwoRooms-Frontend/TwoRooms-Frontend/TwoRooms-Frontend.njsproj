@@ -1,0 +1,204 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>TwoRooms-Frontend</Name>
+    <RootNamespace>TwoRooms-Frontend</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>53ed7c6e-03e9-4864-a042-f73c92e3722b</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>node_modules\@vue\cli-service\bin\vue-cli-service.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+    <ScriptArguments>serve</ScriptArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+      npm run build
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="public\" />
+    <Folder Include="src\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\assets\cards\" />
+    <Folder Include="src\assets\cards\blue\" />
+    <Folder Include="src\assets\cards\grey\" />
+    <Folder Include="src\assets\cards\other\" />
+    <Folder Include="src\assets\cards\red\" />
+    <Folder Include="src\components\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="babel.config.js" />
+    <Content Include="package.json" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\index.html" />
+    <Content Include="README.md" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\assets\cards\blue\Agent.PNG" />
+    <Content Include="src\assets\cards\blue\Ambassador.PNG" />
+    <Content Include="src\assets\cards\blue\Angel.PNG" />
+    <Content Include="src\assets\cards\blue\Blind.PNG" />
+    <Content Include="src\assets\cards\blue\Bouncer.PNG" />
+    <Content Include="src\assets\cards\blue\Clown.PNG" />
+    <Content Include="src\assets\cards\blue\Conman.PNG" />
+    <Content Include="src\assets\cards\blue\Coyboy.PNG" />
+    <Content Include="src\assets\cards\blue\Criminal.PNG" />
+    <Content Include="src\assets\cards\blue\Dealer.PNG" />
+    <Content Include="src\assets\cards\blue\Demon.PNG" />
+    <Content Include="src\assets\cards\blue\Doctor.PNG" />
+    <Content Include="src\assets\cards\blue\Enforcer.PNG" />
+    <Content Include="src\assets\cards\blue\Eris.PNG" />
+    <Content Include="src\assets\cards\blue\Invincible.PNG" />
+    <Content Include="src\assets\cards\blue\Mayor.PNG" />
+    <Content Include="src\assets\cards\blue\Medic.PNG" />
+    <Content Include="src\assets\cards\blue\Mime.PNG" />
+    <Content Include="src\assets\cards\blue\Mummy.PNG" />
+    <Content Include="src\assets\cards\blue\Negotiator.PNG" />
+    <Content Include="src\assets\cards\blue\Nurse.PNG" />
+    <Content Include="src\assets\cards\blue\Paparazzo.PNG" />
+    <Content Include="src\assets\cards\blue\Paranoid.PNG" />
+    <Content Include="src\assets\cards\blue\Player.PNG" />
+    <Content Include="src\assets\cards\blue\President.PNG" />
+    <Content Include="src\assets\cards\blue\PresidentsDaughter.PNG" />
+    <Content Include="src\assets\cards\blue\Psychologist.PNG" />
+    <Content Include="src\assets\cards\blue\Security.PNG" />
+    <Content Include="src\assets\cards\blue\ShyGuy.PNG" />
+    <Content Include="src\assets\cards\blue\Spy.PNG" />
+    <Content Include="src\assets\cards\blue\Thug.PNG" />
+    <Content Include="src\assets\cards\blue\TuesdayKnight.PNG" />
+    <Content Include="src\assets\cards\blue\Usurper.PNG" />
+    <Content Include="src\assets\cards\grey\Agoraphobe.PNG" />
+    <Content Include="src\assets\cards\grey\Ahab.PNG" />
+    <Content Include="src\assets\cards\grey\Anarchist.PNG" />
+    <Content Include="src\assets\cards\grey\BombBot.PNG" />
+    <Content Include="src\assets\cards\grey\Butler.PNG" />
+    <Content Include="src\assets\cards\grey\Clone.PNG" />
+    <Content Include="src\assets\cards\grey\Decoy.PNG" />
+    <Content Include="src\assets\cards\grey\Gambler.PNG" />
+    <Content Include="src\assets\cards\grey\HotPotato.PNG" />
+    <Content Include="src\assets\cards\grey\Intern.PNG" />
+    <Content Include="src\assets\cards\grey\Juliet.PNG" />
+    <Content Include="src\assets\cards\grey\Maid.PNG" />
+    <Content Include="src\assets\cards\grey\Mastermind.PNG" />
+    <Content Include="src\assets\cards\grey\MI6.PNG" />
+    <Content Include="src\assets\cards\grey\Minion.PNG" />
+    <Content Include="src\assets\cards\grey\Mistress.PNG" />
+    <Content Include="src\assets\cards\grey\Moby.PNG" />
+    <Content Include="src\assets\cards\grey\NuclearTyrant.PNG" />
+    <Content Include="src\assets\cards\grey\PrivateEye.PNG" />
+    <Content Include="src\assets\cards\grey\Queen.PNG" />
+    <Content Include="src\assets\cards\grey\Rival.PNG" />
+    <Content Include="src\assets\cards\grey\Robot.PNG" />
+    <Content Include="src\assets\cards\grey\Romeo.PNG" />
+    <Content Include="src\assets\cards\grey\Sniper.PNG" />
+    <Content Include="src\assets\cards\grey\Survivor.PNG" />
+    <Content Include="src\assets\cards\grey\Target.PNG" />
+    <Content Include="src\assets\cards\grey\Traveler.PNG" />
+    <Content Include="src\assets\cards\grey\Victim.PNG" />
+    <Content Include="src\assets\cards\grey\Wife.PNG" />
+    <Content Include="src\assets\cards\other\Drunk.PNG" />
+    <Content Include="src\assets\cards\other\Leprechaun.PNG" />
+    <Content Include="src\assets\cards\other\Zombie.PNG" />
+    <Content Include="src\assets\cards\red\Agent.PNG" />
+    <Content Include="src\assets\cards\red\Ambassador.PNG" />
+    <Content Include="src\assets\cards\red\Angel.PNG" />
+    <Content Include="src\assets\cards\red\Blind.PNG" />
+    <Content Include="src\assets\cards\red\Bomber.PNG" />
+    <Content Include="src\assets\cards\red\Bouncer.PNG" />
+    <Content Include="src\assets\cards\red\Clown.PNG" />
+    <Content Include="src\assets\cards\red\Conman.PNG" />
+    <Content Include="src\assets\cards\red\Coyboy.PNG" />
+    <Content Include="src\assets\cards\red\Criminal.PNG" />
+    <Content Include="src\assets\cards\red\Cupid.PNG" />
+    <Content Include="src\assets\cards\red\Dealer.PNG" />
+    <Content Include="src\assets\cards\red\Demon.PNG" />
+    <Content Include="src\assets\cards\red\DrBoom.PNG" />
+    <Content Include="src\assets\cards\red\Enforcer.PNG" />
+    <Content Include="src\assets\cards\red\Engineer.PNG" />
+    <Content Include="src\assets\cards\red\Immunologist.PNG" />
+    <Content Include="src\assets\cards\red\Martyr.PNG" />
+    <Content Include="src\assets\cards\red\Mayor.PNG" />
+    <Content Include="src\assets\cards\red\Medic.PNG" />
+    <Content Include="src\assets\cards\red\Mime.PNG" />
+    <Content Include="src\assets\cards\red\Mummy.PNG" />
+    <Content Include="src\assets\cards\red\Negotiator.PNG" />
+    <Content Include="src\assets\cards\red\Paparazzo.PNG" />
+    <Content Include="src\assets\cards\red\Paranoid.PNG" />
+    <Content Include="src\assets\cards\red\Player.PNG" />
+    <Content Include="src\assets\cards\red\Psychologist.PNG" />
+    <Content Include="src\assets\cards\red\Security.PNG" />
+    <Content Include="src\assets\cards\red\ShyGuy.PNG" />
+    <Content Include="src\assets\cards\red\Spy.PNG" />
+    <Content Include="src\assets\cards\red\Thug.PNG" />
+    <Content Include="src\assets\cards\red\Tinkerer.PNG" />
+    <Content Include="src\assets\cards\red\Usurper.PNG" />
+    <Content Include="src\assets\logo.png" />
+    <Content Include="src\components\Card.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\Game.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\HelloWorld.vue" />
+    <Content Include="src\components\Login.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\main.js" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
