@@ -1,3 +1,0 @@
-C:\Users\rclca\source\repos\TwoRooms-Frontend\TwoRooms-Frontend\TwoRooms-Frontend\obj\Debug\TwoRooms-Frontend.njsproj.AssemblyReference.cache
-C:\Users\rclca\source\repos\TwoRooms-Frontend\TwoRooms-Frontend\TwoRooms-Frontend\obj\Debug\TwoRooms-Frontend.njsproj.CoreCompileInputs.cache
-C:\Users\rclca\source\repos\TwoRooms-Frontend\TwoRooms-Frontend\TwoRooms-Frontend\bin\Microsoft.NodejsTools.WebRole.dll
