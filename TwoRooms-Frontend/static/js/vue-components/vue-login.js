@@ -22,8 +22,17 @@ export default {
     methods: {
         login(){
             //console.log(`Logging in for account ${this.accountName} and password ${this.accountPassword}`);
-
-            fetch(`/services/login?accountName=${this.accountName}&accountPassword=${this.accountPassword}`, {method: "GET"})
+            const reqBody = {
+                'accountName': this.accountName,
+                'accountPassword': this.accountPassword
+            };
+            fetch(`/services/login`,
+                {
+                    headers: {'content-type':'application/json'},
+                    body: JSON.stringify(reqBody),
+                    method: "POST"
+                }
+            )
             .then(resp => resp.json())
             .then(login => {                
                 //console.info(login);

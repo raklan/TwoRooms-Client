@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 
-const UserAPI = require('./services/userapi')
+const UserAPI = require('./services/userapi');
+const GameAPI = require('./services/gameapi.js');
 
 const app = express();
 const PORT = 3000;
@@ -11,21 +12,63 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
 
 app.use(express.static(path.join(__dirname, "./static")));
+app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.render("pages/index", {pageTitle: 'Home'});
+    res.render("pages/index", {pageTitle: 'Two Rooms Online'});
 });
 
-//GET REQUESTS
-app.get("/services/login", async (req, res) => {//TODO: Make this a post to hide their login credentials from the query string
+//#region GET REQUESTS
+app.get("/services/joinGame", async (req, res) => {
     //console.log(req.query);
     try{
-        const login = await UserAPI.login(req.query.accountName, req.query.accountPassword);
+        const joinReq = await GameAPI.joinGame(req.query.username, req.query.roomCode);
+        res.status(200).send(joinReq.data);
+    }catch(err){
+        res.status(409).send(err);
+    }
+
+});
+app.get("/services/leaveGame", async (req, res) => {
+    //console.log(req.query);
+    try{
+        const leaveReq = await GameAPI.leaveGame(req.query.username, req.query.gameId);
+        res.status(200).send(leaveReq.data);
+    }catch(err){
+        res.status(409).send(err);
+    }
+});
+app.get("/services/listPlayers", async (req, res) => {
+    try{
+        const playersReq = await GameAPI.listPlayersInGame(req.query.gameId);
+        res.status(200).send(playersReq.data);
+    }catch(err){
+        res.status(409).send(err);
+    }
+});
+//#endregion
+
+//#region POST REQUESTS
+app.post("/services/login", async (req, res) => {
+    //console.log(req.body);
+    try{
+        const login = await UserAPI.login(req.body.accountName, req.body.accountPassword);
         res.status(200).send(login.data);
     }catch(err){
         res.status(409).send(err);
     }
 });
+
+app.post("/services/createGame", async (req, res) => {
+    //console.log(req.body);
+    try{
+        const game = await GameAPI.createGame(req.body.username);
+        res.status(200).send(game.data);
+    }catch(err){
+        res.status(409).send(err);
+    }
+});
+//#endregion
 
 app.use((err, req, res) => {
     console.error(err.stack);
