@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const ProgressBar = require('progressbar.js');
 
 const UserAPI = require('./services/userapi');
 const GameAPI = require('./services/gameapi.js');
@@ -67,6 +68,13 @@ app.post("/services/createGame", async (req, res) => {
     }catch(err){
         res.status(409).send(err);
     }
+});
+//#endregion
+
+//#region Resources
+app.get('/progressbar', async (req, res) => {
+    //console.log('requesting progressbar');
+    res.sendFile(__dirname + '/node_modules/progressbar.js/dist/progressbar.min.js');
 });
 //#endregion
 

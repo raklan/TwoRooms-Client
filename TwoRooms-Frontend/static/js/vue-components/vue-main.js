@@ -1,13 +1,15 @@
 //===Imports===
 import Lobby from './vue-lobby.js';
-import Login from './vue-login.js'
+import Login from './vue-login.js';
+import GameView from './vue-gameview.js';
 import UserHome from './vue-userhome.js';
 
 //===CONSTANTS===
 //Active Component Constants
-const LOGIN = 'login';
-const USERHOME = 'userhome';
 const LOBBY = 'lobby';
+const LOGIN = 'login';
+const GAMEVIEW = 'gameview';
+const USERHOME = 'userhome';
 
 //===Component definition===
 export default {
@@ -15,6 +17,7 @@ export default {
     components: {
         Lobby,
         Login,
+        GameView,
         UserHome
     },
     data(){
@@ -53,14 +56,10 @@ export default {
             this.activeComponent = USERHOME;
         }
     },
-    watch: {
-        user(){
-            //console.log("User Changed: ", this.user);
-        }
-    },
     template: `
-    <Login @logged-in="userLoggedIn" v-if="activeComponent === 'login'"></Login>
-    <UserHome @logged-out="userLoggedOut" @game-joined="userJoinedGame" :user="user" v-if="activeComponent === 'userhome'"></UserHome>
     <Lobby @game-left="userLeftGame()" v-if="activeComponent === 'lobby'" :game-id="joinedGameId" :user="user"></Lobby>
+    <Login @logged-in="userLoggedIn" v-if="activeComponent === 'login'"></Login>
+    <GameView v-if="activeComponent === 'gameview'"></GameView>
+    <UserHome @logged-out="userLoggedOut" @game-joined="userJoinedGame" :user="user" v-if="activeComponent === 'userhome'"></UserHome>
     `
 }

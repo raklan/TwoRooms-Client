@@ -8,6 +8,7 @@ export default {
         }
     },
     mounted(){
+        const vm = this;
         //Automatically log the user in if they refresh the page without logging out
         const previousAccountName = sessionStorage.getItem('accountName');
         const previousAccountPassword = sessionStorage.getItem('accountPassword'); 
@@ -18,6 +19,17 @@ export default {
             this.accountPassword = previousAccountPassword;
             this.login();
         }
+
+        this.$refs.usernameBox.addEventListener("keyup", function(event){
+            if(event.key === 'Enter'){
+                vm.$refs.passwordBox.focus();
+            }
+        });
+        this.$refs.passwordBox.addEventListener("keyup", function(event){
+            if(event.key === 'Enter'){
+                vm.login();
+            }
+        });
     },
     methods: {
         login(){
@@ -50,11 +62,11 @@ export default {
     },
     template: `
         <div>
-            <input type="text" class="form-control form-control-sm m-2" v-model="accountName" placeholder="Username" />
-            <input type="password" class="form-control form-control-sm m-2" v-model="accountPassword" placeholder="Password" />
+            <input ref="usernameBox" tabindex="1" type="text" class="form-control form-control-sm m-2" v-model="accountName" placeholder="Username" />
+            <input ref="passwordBox" tabindex="2" type="password" class="form-control form-control-sm m-2" v-model="accountPassword" placeholder="Password" />
 
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-primary" v-on:click="login">Log In</button>
+                <button tabindex="3" type="button" class="btn btn-outline-primary" v-on:click="login">Log In</button>
             </div>
         </div>
     `
