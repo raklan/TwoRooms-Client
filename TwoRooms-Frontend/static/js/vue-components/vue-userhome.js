@@ -1,5 +1,3 @@
-//TODO: Get Room Code text box to automatically fix formatting
-
 //===Component Definition===
 export default {
     props: ['user'],
@@ -9,6 +7,7 @@ export default {
         }
     },
     mounted(){
+        //RoomCode Box auto-formatter
         this.$refs.roomCodeBox.addEventListener("keyup", function(event) {
             // Stop from running if the user makes a selection within the input
 	        var selection = window.getSelection().toString();
@@ -31,7 +30,7 @@ export default {
             }
             
             this.value = chunk.join("-").toUpperCase();
-        }); //TODO: Figure out a way to allow the user to input dashes without it breaking  
+        }); //TODO: Figure out a way to allow the user to input dashes without it breaking. Also, limit textbox to 6 characters
     },
     methods:{
         logout(){

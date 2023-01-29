@@ -20,6 +20,7 @@ export default {
             this.login();
         }
 
+        //Move focus appropriately when the user presses enter
         this.$refs.usernameBox.addEventListener("keyup", function(event){
             if(event.key === 'Enter'){
                 vm.$refs.passwordBox.focus();
@@ -49,6 +50,7 @@ export default {
             .then(login => {                
                 //console.info(login);
                 if(login.status === 200 || login.status === 201){
+                    //Save user's info to automatically log them back in if they happen to refresh the page
                     sessionStorage.setItem('accountName', this.accountName);
                     sessionStorage.setItem('accountPassword', this.accountPassword);
                     //Tell main component who the currently logged-in user is

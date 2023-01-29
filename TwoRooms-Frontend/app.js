@@ -39,6 +39,7 @@ app.get("/services/leaveGame", async (req, res) => {
         res.status(409).send(err);
     }
 });
+
 app.get("/services/listPlayers", async (req, res) => {
     try{
         const playersReq = await GameAPI.listPlayersInGame(req.query.gameId);
@@ -47,6 +48,46 @@ app.get("/services/listPlayers", async (req, res) => {
         res.status(409).send(err);
     }
 });
+
+app.get("/services/startGame", async (req, res) => {
+    try{
+        const game = await GameAPI.startGame(req.query.gameId);
+        res.status(200).send(game.data);
+    }catch(err){
+        res.status(409).send(err);
+    }
+});
+
+app.get("/services/getGameStatus", async (req, res) => {
+    try{
+        const gameReq = await GameAPI.getGameStatus(req.query.gameId);
+        res.status(200).send(gameReq.data);
+    }catch(err){
+        res.status(409).send(err);
+    }
+});
+
+app.get("/services/getTasksForUser", async (req, res) => {
+    try{
+        const allTasks = await GameAPI.getPendingTasks(req.query.gameId, req.query.round);
+        const tasksForUser = allTasks.data.data.tasks.filter(task => 
+            (task.task === "Card Share" && task.details.shareWith === req.query.username) || (task.task === "Leader Nomination" && task.username === req.query.username)
+        );
+        res.status(200).send(tasksForUser);
+    }catch(err){
+        res.status(409).send(err);
+    }
+});
+
+app.get('/services/seePlayerInfo', async (req, res) => {
+    try{
+        const allPlayers = await GameAPI.listPlayersInGame(req.query.gameId);
+        const thisPlayer = allPlayers.data.data.players.filter(player => player.username === req.query.username).at(0);
+        res.status(200).send(thisPlayer);
+    }catch(err){
+        res.status(409).send(err);
+    }
+})
 //#endregion
 
 //#region POST REQUESTS
@@ -83,7 +124,7 @@ app.use((err, req, res) => {
     res.status(500).send("Error message goes here...");
 });
 
-//ANY AND ALL GET/POST/PUT ETC. METHODS MUST COME BEFORE THIS ONE. Learned that the hard way...
+//ANY AND ALL GET/POST/PUT ETC. METHODS MUST COME BEFORE THIS. Learned that the hard way...
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is now running on port ${PORT}`);
 });

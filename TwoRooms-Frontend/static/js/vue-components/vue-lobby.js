@@ -1,3 +1,5 @@
+//TODO: Show room code in lobby
+
 export default {
     name: 'Lobby',
     props: ['gameId','user'],
@@ -26,6 +28,14 @@ export default {
             });
         },
 
+        startGame(){
+            fetch(`/services/startGame?gameId=${this.gameId}`)
+                .then(resp => resp.json())
+                .then(apiObj => {
+                    
+                });
+        },
+
         checkPlayersInLobby(){
             fetch(`/services/listPlayers?gameId=${this.gameId}`)
             .then(resp => resp.json())
@@ -35,7 +45,13 @@ export default {
 
                 this.currentPlayerIsHost = (gameData.data.ownerUserName === this.user.username);
 
-                setTimeout(this.checkPlayersInLobby, 5000);
+                if(gameData.data.active === true){
+                    this.$emit('game-started');
+                }
+                else{ //If the game isn't started, hang out in the lobby until it's time to refresh
+                    setTimeout(this.checkPlayersInLobby, 5000);
+                }
+
             });
         }
     },
@@ -54,7 +70,7 @@ export default {
                 </div>
             </div>
             <div class="row m-2">
-                <button v-if="currentPlayerIsHost" type="button" class="btn btn-outline-success">Start Game</button>
+                <button v-if="currentPlayerIsHost" v-on:click="startGame" type="button" class="btn btn-outline-success">Start Game</button>
             </div>
         </div>
     `

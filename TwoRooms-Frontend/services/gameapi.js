@@ -42,5 +42,29 @@ module.exports = {
             'content-type':'application/json'
         },
         url: `${BASE_URL}/game/${gameId}?action=listPlayers`
+    }),
+
+    startGame: (gameId) => axios({
+        method: 'PUT',
+        url: `${BASE_URL}/game/${gameId}?action=startGame`,
+        headers: {
+            'content-type': 'application/json'
+        }
+    }),
+
+    getGameStatus: (gameId) => axios({
+        method: 'GET',
+        headers: {
+            'content-type':'application/json'
+        },
+        url: `${BASE_URL}/game/${gameId}?action=gameStatus`
+    }),
+
+    getPendingTasks: (gameId, round) => axios({
+        method: 'GET',
+        url: `${BASE_URL}/tasks?gameId=${gameId}&round=${round}&status=Pending`,
+        headers: {
+            'content-type':'application/json'
+        }
     })
 }
